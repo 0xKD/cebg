@@ -37,7 +37,7 @@ def handle_mkdirlist(mkdir_list):
 	for i in newlist:
 		touch(i)
 
-manifest = json.loads('{\
+__manifest__ = json.loads('{\
 	"manifest_version":2,\
 	"version":"0.1",\
 	"name":"pyExtension",\
@@ -56,7 +56,8 @@ manifest = json.loads('{\
 	"options_page":""\
 	}', object_pairs_hook=collections.OrderedDict)
 
-if __name__ == "__main__":
+def main():
+	manifest = __manifest__
 	has_bg_page = True
 	mkdir_list = []
 
@@ -126,3 +127,6 @@ if __name__ == "__main__":
 
 	with open(folder + '\\'+ 'manifest.json','w') as outfile:
 		json.dump(manifest, outfile)
+
+if __name__ == "__main__":
+	main()
